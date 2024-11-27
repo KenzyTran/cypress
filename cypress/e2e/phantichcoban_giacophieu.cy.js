@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 describe('Kiểm tra giá cổ phiếu ở trang Phân Tích Cơ Bản', () => {
-    const validUsername = 'teamapp@happy.live';
-    const validPassword = '1368$$kfsp$$1368';
+    const validUsername = 'Username';
+    const validPassword = 'Password';
   
     // Danh sách mã và giá cổ phiếu cần kiểm tra
     const stockData = [
