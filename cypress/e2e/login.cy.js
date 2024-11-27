@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 describe ('test login',() => {
-    const validUsername = 'hoanghaiyenhl2000@gmail.com';
-    const validPassword = '123456';
+    const validUsername = 'Username';
+    const validPassword = 'Password';
   
     beforeEach(() => {
       cy.visit ('https://kfsp.vn/login');
