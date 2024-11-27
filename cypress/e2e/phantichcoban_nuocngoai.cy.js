@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 describe('Kiểm tra số liệu nước ngoài ở trang Phân Tích Cơ Bản', () => {
-    const validUsername = 'teamapp@happy.live';
-    const validPassword = '1368$$kfsp$$1368';
+    const validUsername = 'Username';
+    const validPassword = 'Password';
   
     // Mảng chứa thông tin mã và giá trị mong muốn
     const stockData = [
