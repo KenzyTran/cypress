@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 describe('Kiểm tra số liệu ở mục Bảng giá', () => {
-    const validUsername = 'teamapp@happy.live';
-    const validPassword = '1368$$kfsp$$1368';
+    const validUsername = 'Username';
+    const validPassword = 'Password';
     const expectedValues = { OI: '195,991', KL_mua: '834', KL_ban: '1,882', KLGD_rong: '2,716' }; // Giá trị mong muốn
   
     before(() => {
