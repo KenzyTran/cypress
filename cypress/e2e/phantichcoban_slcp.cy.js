@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 describe('Kiểm tra số liệu cổ phiếu ở trang Phân Tích Cơ Bản', () => {
-    const validUsername = 'teamapp@happy.live';
-    const validPassword = '1368$$kfsp$$1368';
+    const validUsername = 'Username';
+    const validPassword = 'Password';
     const stockData = [ // Mảng chứa thông tin mã và giá trị mong muốn
       { stockcode: 'BSR', expectedValue: '3,100,499,66' },
 
