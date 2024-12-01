@@ -2,9 +2,9 @@
 
 import 'cypress-real-events/support';
 
-describe('Kiểm tra dữ liệu khi hover vào Tự doanh với các option khác nhau', () => {
-    const validUsername = 'teamapp@happy.live';
-    const validPassword = '1368$$kfsp$$1368';
+describe('Kiểm tra dữ liệu biểu đồ Tự doanh với các option khác nhau', () => {
+    const validUsername = 'username';
+    const validPassword = 'password';
 
     before(() => {
         // Đăng nhập vào hệ thống
@@ -69,7 +69,7 @@ describe('Kiểm tra dữ liệu khi hover vào Tự doanh với các option kh�
                 .eq(1)
                 .then(($div) => {
                     const data = $div.text();
-                    cy.log(`Dữ liệu từ div (${option}):`, data);
+                    cy.log(`Dữ liệu từ (${option}):`, data);
                 });
         });
     });
