@@ -41,23 +41,8 @@ describe('Kiểm tra dữ liệu biểu đồ Tự doanh với các option khác
                 .should('be.visible')
                 .click();  
 
-            const hoverPositionX = 800;
-            const hoverPositionY = 175 * 0.6;
-
-            // Hover vào tọa độ
-            cy.get('div.mb-0.d-flex.flex-column.card-wrapper.indexforeign-chart')
-                .find('div.card-content.height-100.position-relative')
-                .find('div.d-flex.align-items-center')
-                .find('x-vue-echarts.chart.bg-chart.pl-2.echarts')
-                .eq(0)
-                .find('canvas')
-                .should('exist')
-                .and('be.visible')
-                .trigger('mouseover', hoverPositionX, hoverPositionY, { force: true });
-
             cy.wait(2000);
 
-            // Thử hover với cách khác
             cy.get('x-vue-echarts.chart.bg-chart.pl-2.echarts')
                 .find('canvas')
                 .realHover({ position: { x: 340, y: 50 } });
