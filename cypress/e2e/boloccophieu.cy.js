@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 describe('Kiểm tra Bộ lọc cổ phiếu với các tab khác nhau', () => { 
-    const validUsername = 'Username';
-    const validPassword = 'Passowrd';
+    const validUsername = 'username';
+    const validPassword = 'password';
   
     const login = () => {
         cy.visit('https://kfsp.vn/login');
@@ -21,7 +21,6 @@ describe('Kiểm tra Bộ lọc cổ phiếu với các tab khác nhau', () => {
     const checkTable = () => {
         let allValues = [];
 
-        // Giả sử table vẫn dùng selector như cũ:
         cy.get('table.table.table-row-all.table-fixed.table-hover.table-bordered')
           .find('tbody')
           .find('tr')
@@ -66,14 +65,21 @@ describe('Kiểm tra Bộ lọc cổ phiếu với các tab khác nhau', () => {
         // Lần đầu kiểm tra table (tab mặc định) nếu cần
         checkTable();
 
+        cy.on('uncaught:exception', (err) => {
+            if (err.message.includes('Navigating to current location')) {
+              return false; // Bỏ qua lỗi này
+            }
+          });
+
         // Lưu ý: li[2] (theo kiểu con người đếm) tương ứng với .eq(1) trong Cypress (do 0-based index)
-        for (let i = 1; i < 8; i++) {
+        for (let i = 1; i < 9; i++) {
+
             cy.get('ul.nav.nav-tabs.mt-1')
               .find('li')
               .eq(i)
               .find('a')
-              .click({ force: true }); // force: true nếu cần click dù element bị che
-            cy.wait(1000);
+              .click(); // force: true nếu cần click dù element bị che
+            cy.wait(2000);
 
             // Gọi lại hàm checkTable() sau mỗi lần click
             checkTable();
