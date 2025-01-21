@@ -30,14 +30,14 @@ describe('Kiểm tra dữ liệu thanh khoản', () => {
 
     // Thực hiện hover từ X = 45 đến X = 835
     for (let x = hoverStartX; x <= hoverEndX; x += 10) {
-      cy.get('x-vue-echarts.chart.bg-chart.echarts')
+      cy.get('x-vue-echarts.chart.bg-chart.echarts') //id='liquid_chart'
         .eq(3)
         .find('canvas')
         .realHover({ position: { x, y: 50 } });
 
-      cy.wait(200); // Chờ phản hồi từ biểu đồ
+      cy.wait(200); // Chờ phản hồi từ biểu đồ 
 
-      cy.get('x-vue-echarts.chart.bg-chart.echarts')
+      cy.get('x-vue-echarts.chart.bg-chart.echarts') //id='liquid_chart'
         .eq(3)
         .find('div')
         .eq(1)
@@ -50,24 +50,28 @@ describe('Kiểm tra dữ liệu thanh khoản', () => {
             if (timeMatch) {
               const hoverTime = timeMatch[1];
 
-              // Loại trừ thời gian từ 11:31:00 đến 12:59:59
-              if (hoverTime >= '11:31:00' && hoverTime <= '12:59:59') {
+              // Loại trừ thời gian từ 11:30:00 đến 12:59:59
+              if (hoverTime >= '11:30:00' && hoverTime <= '12:59:59') {
                 cy.log('Thời gian nằm trong khoảng bị loại trừ, không kiểm tra dữ liệu.');
               } else {
                 const now = new Date();
                 const currentTime = now.toTimeString().slice(0, 8);
 
-                if (hoverTime >= '09:00:00' && hoverTime <= currentTime) {
+                if (currentTime < '08:00:00') {
+                  // Trường hợp trước 8 giờ sáng
+                  expect(data).to.include('Tổng GTGD hôm nay');
+                  expect(data).to.not.include('Tổng GTGD hôm qua');
+                } else if (hoverTime >= '09:00:00' && hoverTime <= currentTime) {
                   // Hover time trong khoảng từ 09:00:00 đến thời gian thực
                   expect(data).to.include('Tổng GTGD hôm nay');
                 } else {
                   // Hover time vượt qua thời gian thực
-                  expect(data).to.not.include('Tổng GTGD hôm nay');
+                  expect(data).to.include('Tổng GTGD hôm qua');
                 }
               }
             }
           }
         });
-    }
+      }
   });
 });
