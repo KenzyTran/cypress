@@ -1,8 +1,6 @@
 describe('test dashboard', () => {
 
-    // const validUsername = 'hoanghaiyenhl2000@gmail.com';
-    // const validPassword = '123456';
-    const validUsername = 'hh.yen.91189@gmail.com';
+    const validUsername = 'username';
     const validPassword = '123456123456';
 
     beforeEach(() => {
